@@ -103,14 +103,21 @@ a {
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  background: rgba(248, 250, 252, 0.92);
+  background: rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  transition: all 0.25s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 14px;
   min-height: 72px;
 }
 
@@ -119,40 +126,56 @@ a {
   align-items: center;
   gap: 10px;
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.45rem;
 }
 
 .brand-mark {
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
   background: linear-gradient(135deg, var(--primary), #06b6d4);
   display: grid;
   place-items: center;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 800;
 }
 
 .nav-links {
   display: none;
-  gap: 24px;
+  gap: 18px;
   align-items: center;
+  margin-left: auto;
 }
 
 .nav-links a {
   color: #0f172a;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 1.02rem;
+  padding: 6px 2px;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  border-bottom-color: #93c5fd;
 }
 
 .nav-links a.active {
   color: var(--primary);
-  font-weight: 700;
+  border-bottom-color: var(--primary);
 }
 
 .nav-cta {
   display: none !important;
+  padding: 6px 10px;
+  border-radius: 9px;
+  font-size: 0.74rem;
+  margin-left: 10px;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
 }
 
 .menu-btn {
@@ -164,22 +187,43 @@ a {
   display: grid;
   place-items: center;
   cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+}
+
+.menu-btn:hover {
+  border-color: #93c5fd;
+  color: var(--primary);
 }
 
 .mobile-menu {
-  display: none;
-  padding: 10px 0 16px;
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0;
+  margin-bottom: 0;
+  transition: all 0.25s ease;
 }
 
 .mobile-menu.open {
+  opacity: 1;
+  max-height: 340px;
+  margin: 8px 0 12px;
+  padding: 8px 12px;
   display: grid;
   gap: 8px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
 .mobile-menu a {
-  padding: 12px 8px;
-  border-bottom: 1px solid #e2e8f0;
-  font-weight: 500;
+  padding: 10px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  border-radius: 8px;
+  font-weight: 600;
 }
 
 .btn {
@@ -572,13 +616,14 @@ footer.site-footer {
 
 @media (max-width: 420px) {
   .brand {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .brand-mark {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     border-radius: 9px;
+    font-size: 0.95rem;
   }
 
   .stats {
