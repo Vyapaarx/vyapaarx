@@ -152,7 +152,7 @@ a {
 }
 
 .nav-cta {
-  display: none;
+  display: none !important;
 }
 
 .menu-btn {
@@ -608,7 +608,7 @@ footer.site-footer {
   }
 
   .nav-cta {
-    display: inline-flex;
+    display: inline-flex !important;
   }
 
   .menu-btn,
