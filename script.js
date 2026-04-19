@@ -86,7 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = encodeURIComponent(messageLines.join("\n"));
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
-      window.open(whatsappUrl, "_blank", "noopener");
+      const isMobile = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = whatsappUrl;
+      } else {
+        const popup = window.open(whatsappUrl, "_blank", "noopener");
+        if (!popup) window.location.href = whatsappUrl;
+      }
       form.reset();
     });
   });
